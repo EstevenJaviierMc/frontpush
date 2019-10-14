@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: OpenSans-Regular;
+    src: url(assets/css/OpenSans-Regular.ttf);
+  }
+  @font-face {
+    font-family: OpenSans-LightItalic;
+    src: url(assets/css/OpenSans-LightItalic.ttf);
+  }
+  @font-face {
+    font-family: OpenSans-Italic;
+    src: url(assets/css/OpenSans-Italic.ttf);
+  }
+  * {
+    font-family: 'OpenSans-Regular';
+  }

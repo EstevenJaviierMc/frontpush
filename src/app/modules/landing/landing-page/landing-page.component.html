@@ -1,0 +1,87 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" [routerLink]="['']"><img class="logo-img" src="../../../../assets/media/logo.png"
+                    alt="logo" draggable="false"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" [routerLink]="['']">INICIO <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['']">ACERCA DE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['']">CONTACTO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/invitar-a']">INVITAR A</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row justify-content-center introduction align-items-center">
+            <div class="col-lg-4 info">
+                <div class="text-content mb-3">
+                    Somos la Iglesia Centro Familiar Cristiano Palabra de Fe, donde todos somos importantes y
+                    Jesucristo es el señor.
+                </div>
+                <button class="btn btn-primary btn-block btn-unirse mb-2">Únete a esta gran familia!</button>
+
+            </div>
+            <div class="col-lg-7">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <video class="intr-video" src="../../../../assets/media/70635466.mp4" controls loop
+                        poster="../../../../assets/media/cover.png"></video>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="mt-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                <div class="card mb-2" style=" margin: auto;">
+                    <img src="../../../../assets/img/p1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            of the card's content.</p>
+                        <a [routerLink]="['']" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                <div class="card mb-2" style=" margin: auto;">
+                    <img src="../../../../assets/img/p2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            of the card's content.</p>
+                        <a [routerLink]="['']" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                <div class="card mb-2" style=" margin: auto;">
+                    <img src="../../../../assets/img/p3.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            of the card's content.</p>
+                        <a [routerLink]="['']" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
