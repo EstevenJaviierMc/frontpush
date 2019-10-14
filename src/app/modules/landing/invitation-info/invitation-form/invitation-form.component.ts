@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MutationService } from '../../../graphql/mutation.service'
 
 @Component({
   selector: 'app-invitation-form',
@@ -23,7 +22,7 @@ export class InvitationFormComponent implements OnInit {
   loading: boolean = false;
   error: any;
 
-  constructor(private apollo: Apollo, private ms: MutationService) { }
+  constructor(private apollo: Apollo) { }
 
   ngOnInit() {
   }
@@ -31,15 +30,7 @@ export class InvitationFormComponent implements OnInit {
   onInvitar() {
     this.loading = true;
 
-    this.ms.submitAddInvitado(this.formInvitation.value).subscribe(resul => {
-      this.loading = false;
-      this.formInvitation.reset(); console.log(this.formInvitation)
-      alert('Se ha generado la invitacion para ' + resul.data['addInvitado'].nombres + ' ' + resul.data['addInvitado'].apellidos + ', con exito!')
-    }, (error) => {
-      this.loading = false;
-      alert("Error, intentalo mas tarde!")
-      console.log('there was an error sending the query', error);
-    });
+
   }
 
 }
