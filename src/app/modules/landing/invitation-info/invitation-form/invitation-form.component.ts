@@ -33,8 +33,8 @@ export class InvitationFormComponent implements OnInit {
 
     this.servInvitacion.newInvitacion(this.formInvitation.value)
       .subscribe(data => {
-        sweetalert("Enhorabuena!", "Invitacion para " + data.nombres + " exitosa", "success", {
-          timer: 2000
+        sweetalert("Enhorabuena!", "Invitacion para " + data.nombres + ", exitosa", "success", {
+          buttons: { cancel: false, confirm: false }, timer: 3000
         });
         this.loading = false;
         this.formInvitation.reset();
