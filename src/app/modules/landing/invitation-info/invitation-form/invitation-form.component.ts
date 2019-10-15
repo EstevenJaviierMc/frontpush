@@ -30,9 +30,6 @@ export class InvitationFormComponent implements OnInit {
 
   onInvitar() {
     this.loading = true;
-    sweetalert("", "Invitacion para  + data.nombres +  exitosa", "success", {
-      buttons: { cancel: false, confirm: false }, timer: 2000
-    });
 
     this.servInvitacion.newInvitacion(this.formInvitation.value)
       .subscribe(data => {
@@ -42,7 +39,9 @@ export class InvitationFormComponent implements OnInit {
         this.loading = false;
         this.formInvitation.reset();
       }, err => {
-        alert("Se ha presentado un error, intentalo mas tarde!");
+        sweetalert("", "Se ha presentado un error, intentalo mas tarde!", "info", {
+          buttons: { cancel: false, confirm: false }, timer: 3000
+        });
         console.log(err);
         this.loading = false;
       });
