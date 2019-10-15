@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
 import { FormControl, FormGroup } from '@angular/forms';
+import { InvitacionService } from '../../service/invitacion.service';
 
 @Component({
   selector: 'app-invitation-form',
@@ -22,13 +22,25 @@ export class InvitationFormComponent implements OnInit {
   loading: boolean = false;
   error: any;
 
-  constructor(private apollo: Apollo) { }
+  constructor(private servInvitacion: InvitacionService) { }
 
   ngOnInit() {
   }
 
   onInvitar() {
     this.loading = true;
+
+    this.servInvitacion.newInvitacion(this.formInvitation.value)
+      .subscribe(data => {
+        alert("Invitacion para " + data.nombres + " exitosa");
+        this.loading = false;
+        this.formInvitation.reset();
+      }, err => {
+        alert("Se ha presentado un error, intentalo mas tarde!");
+        console.log(err);
+        this.loading = false;
+      });
+
 
 
   }
