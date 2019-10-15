@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { InvitacionService } from '../../service/invitacion.service';
-import sweetalert from 'sweetalert';
+import swal from 'src/assets/sweetalert'
 
 @Component({
   selector: 'app-invitation-form',
@@ -33,13 +33,13 @@ export class InvitationFormComponent implements OnInit {
 
     this.servInvitacion.newInvitacion(this.formInvitation.value)
       .subscribe(data => {
-        sweetalert("Enhorabuena!", "Invitacion para " + data.nombres + ", exitosa", "success", {
+        swal("", "Invitacion para " + data.nombres + ", exitosa", "success", {
           buttons: { cancel: false, confirm: false }, timer: 3000
         });
         this.loading = false;
         this.formInvitation.reset();
       }, err => {
-        sweetalert("", "Se ha presentado un error, intentalo mas tarde!", "info", {
+        swal("", "Se ha presentado un error, intentalo mas tarde!", "info", {
           buttons: { cancel: false, confirm: false }, timer: 3000
         });
         console.log(err);
