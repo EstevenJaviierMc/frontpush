@@ -33,7 +33,7 @@ export class InvitationFormComponent implements OnInit {
 
     this.servInvitacion.newInvitacion(this.formInvitation.value)
       .subscribe(data => {
-        swal("", "Invitacion para " + data.nombres + ", exitosa", "success", {
+        swal("", "Invitacion para " + data.nombres + ", Exitosa!", "success", {
           buttons: { cancel: false, confirm: false }, timer: 3000
         });
         this.loading = false;
