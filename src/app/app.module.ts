@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
+import { AdminModule } from './modules/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     LandingModule,
 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

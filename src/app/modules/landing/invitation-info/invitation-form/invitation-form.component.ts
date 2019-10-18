@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { InvitacionService } from '../../service/invitacion.service';
+import { InvitacionService } from '../../../../service/invitacion.service';
 import swal from 'src/assets/sweetalert'
 
 @Component({
