@@ -67,7 +67,7 @@
                                 <td>{{ inv.created_at | date }}</td>
                                 <td>
                                     <button class="btn btn-primary">E</button>
-                                    <button class="btn btn-danger ml-1">D</button>
+                                    <button class="btn btn-danger ml-1" (click)="onDelete(inv.id)">D</button>
                                 </td>
                             </tr>
                         </tbody>
