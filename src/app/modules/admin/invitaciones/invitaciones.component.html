@@ -37,7 +37,27 @@
                 Invitaciones
             </div>
             <div class="container-fluid">
-                <div class="">Opciones de busqueda</div>
+                <div class="row justify-content-around">
+                    <label for="inputState" class="col-1 col-form-label">Email</label>
+                    <div class="col-1">
+                        <select id="inputState" class="form-control">
+                            <option selected>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <label for="inputState" class="col-1 col-form-label">Email</label>
+                    <div class="col-2">
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <label for="inputState" class="col-1 col-form-label">Email</label>
+                    <div class="col-2">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    </div>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">S</button>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -56,8 +76,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let inv of invitaciones">
-                                <th scope="row">{{ inv.id }}</th>
+                            <tr *ngFor="let inv of invitaciones; index as i">
+                                <th scope="row">{{ i + 1 }}</th>
                                 <td>{{ inv.nombres }}</td>
                                 <td>{{ inv.apellidos }}</td>
                                 <td>{{ inv.telefono }}</td>

@@ -6,7 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { InvitationInfoComponent } from './invitation-info/invitation-info.component';
 import { InvitationFormComponent } from './invitation-info/invitation-form/invitation-form.component';
-import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,8 +17,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     LandingRoutingModule,
-    ReactiveFormsModule,
-    SharedModule
+    ReactiveFormsModule
   ]
 })
 export class LandingModule { }
