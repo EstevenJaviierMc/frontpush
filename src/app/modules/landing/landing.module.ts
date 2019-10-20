@@ -9,7 +9,11 @@ import { InvitationFormComponent } from './invitation-info/invitation-form/invit
 
 
 @NgModule({
-  declarations: [LandingPageComponent, InvitationFormComponent, InvitationInfoComponent],
+  declarations: [
+    LandingPageComponent,
+    InvitationFormComponent,
+    InvitationInfoComponent
+  ],
   imports: [
     CommonModule,
     LandingRoutingModule,

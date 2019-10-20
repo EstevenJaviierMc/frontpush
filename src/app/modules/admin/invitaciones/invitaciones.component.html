@@ -1,0 +1,126 @@
+<div class="container mt-4">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="../../../../assets/media/logo.png" width="100" height="auto" class=" d-inline-block align-top"
+                    alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="mt-5">
+        <div class="card">
+            <div class="card-header">
+                Invitaciones
+            </div>
+            <div class="container-fluid">
+                <div class="row justify-content-around">
+                    <label for="inputState" class="col-1 col-form-label">Email</label>
+                    <div class="col-1">
+                        <select id="inputState" class="form-control">
+                            <option selected>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <label for="inputState" class="col-1 col-form-label">Email</label>
+                    <div class="col-2">
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <label for="inputState" class="col-1 col-form-label">Email</label>
+                    <div class="col-2">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    </div>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">S</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombres</th>
+                                <th scope="col">Apellidos</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Direccion</th>
+                                <th scope="col">InvitadoPor</th>
+                                <th scope="col">Creada</th>
+                                <th scope="col">Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let inv of invitaciones; index as i">
+                                <th scope="row">{{ i + 1 }}</th>
+                                <td>{{ inv.nombres }}</td>
+                                <td>{{ inv.apellidos }}</td>
+                                <td>{{ inv.telefono }}</td>
+                                <td>{{ inv.email }}</td>
+                                <td>{{ inv.direccion }}</td>
+                                <td>{{ inv.invitadoPor }}</td>
+                                <td>{{ inv.created_at | date }}</td>
+                                <td>
+                                    <button class="btn btn-primary">E</button>
+                                    <button class="btn btn-danger ml-1" (click)="onDelete(inv.id)">D</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div style="display: flex;">
+                    <div class="card-text" style="flex: 1;"><small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                    <div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
