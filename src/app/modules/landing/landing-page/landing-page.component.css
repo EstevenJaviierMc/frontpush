@@ -97,3 +97,27 @@
     object-fit: cover;
     object-position: top;
   }
+
+  .imgs {
+    padding: 2em 0em;
+  }
+  
+  .primera_sect {
+    background-color: #f0f2f1;
+    padding: 3em 2em;
+  }
+  .font_italic {
+    font-family: 'OpenSans-Italic'!important;
+  }
+  .img_service {
+    height: 19vh;
+    width: 19vh;
+    margin: auto;
+    border-radius: 20%;
+  }
+  
+  .img_service img {
+    border-radius: 20%;
+    height: 100%;
+    width: 100%;
+  }
