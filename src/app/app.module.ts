@@ -13,7 +13,12 @@ import { SharedModule } from './modules/shared/shared.module';
 import { JwtModule } from "@auth0/angular-jwt";
 
 export function tokenGetter() {
-  return JSON.parse(localStorage.getItem('currentUser'))['access_token'];
+  try {
+    return JSON.parse(localStorage.getItem('currentUser'))['access_token'];
+  } catch (e) {
+    console.log("ds", e);
+    return "";
+  }
 }
 
 @NgModule({
@@ -34,8 +39,9 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ["127.0.0.1:8000"]
-        , blacklistedRoutes: ["127.0.0.1:8000/api/v1/auth/"]
+        skipWhenExpired: true,
+        whitelistedDomains: ["127.0.0.1:8000"],
+        blacklistedRoutes: ["127.0.0.1:8000/api/v1/auth/", "127.0.0.1:8000/api/v1/new-invitation"]
       }
     })
   ],

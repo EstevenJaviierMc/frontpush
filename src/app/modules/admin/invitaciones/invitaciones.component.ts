@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InvitacionesComponent implements OnInit {
   invitaciones: any[];
+  isLoading: boolean = false;
 
   constructor(private sInvitaciones: InvitacionService, private route: ActivatedRoute) { }
 
@@ -27,15 +28,19 @@ export class InvitacionesComponent implements OnInit {
   // this.route.snapshot.params['id']
 
   onDelete(id: number) {
+    this.isLoading = true;
     this.sInvitaciones.deleteInvitacion(id).subscribe(data => {
       swal("", "Eliminacion exitosa", "success", {
         buttons: { cancel: false, confirm: false }, timer: 3000
       });
-
       this.getInivitaciones();
+      this.isLoading = false;
 
     }, err => {
-      console.log(err)
+      swal("", "Se a Produciodo un error al conectarse con el servidor", "error", {
+        buttons: { cancel: false, confirm: false }, timer: 3000
+      });
+      this.isLoading = false;
     });
 
   }

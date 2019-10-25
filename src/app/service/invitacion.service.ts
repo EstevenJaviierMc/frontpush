@@ -12,13 +12,8 @@ export class InvitacionService {
 
   constructor(private http: HttpClient) { }
 
-  getToken(user: any): Observable<any> {
-    return this.http.post(endpoint + 'auth/login', user, httpOptions)
-      .pipe(map(data => data));
-  }
-
   newInvitacion(invitacion: any): Observable<any> {
-    return this.http.post(endpoint + 'invitations', invitacion, httpOptions)
+    return this.http.post(endpoint + 'new-invitation', invitacion, httpOptions)
       .pipe(map(data => data));
   }
 

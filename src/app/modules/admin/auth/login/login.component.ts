@@ -27,8 +27,6 @@ export class LoginComponent implements OnInit {
     this.auth.getToken(this.formLogin.value).subscribe(data => {
       localStorage.setItem('currentUser', JSON.stringify(data));
       this.loading = false;
-
-      console.log(data);
     }, err => {
       this.error = err;
       this.loading = false;
