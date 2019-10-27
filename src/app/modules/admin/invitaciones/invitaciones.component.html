@@ -20,11 +20,14 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Karina Jimenez
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" routerLink="" (click)="onLogout()">Cerrar sesion</a>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -36,29 +39,29 @@
             <div class="card-header">
                 Invitaciones
             </div>
-            <div class="container-fluid">
-                <div class="row justify-content-around">
-                    <label for="inputState" class="col-1 col-form-label">Email</label>
-                    <div class="col-1">
-                        <select id="inputState" class="form-control">
-                            <option selected>2</option>
-                            <option>3</option>
-                        </select>
+            <!-- <div class="container-fluid">
+                    <div class="row justify-content-around">
+                        <label for="inputState" class="col-1 col-form-label">Email</label>
+                        <div class="col-1">
+                            <select id="inputState" class="form-control">
+                                <option selected>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                        <label for="inputState" class="col-1 col-form-label">Email</label>
+                        <div class="col-2">
+                            <select id="inputState" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <label for="inputState" class="col-1 col-form-label">Email</label>
+                        <div class="col-2">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        </div>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">S</button>
                     </div>
-                    <label for="inputState" class="col-1 col-form-label">Email</label>
-                    <div class="col-2">
-                        <select id="inputState" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                        </select>
-                    </div>
-                    <label for="inputState" class="col-1 col-form-label">Email</label>
-                    <div class="col-2">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    </div>
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">S</button>
-                </div>
-            </div>
+                </div> -->
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover table-sm">

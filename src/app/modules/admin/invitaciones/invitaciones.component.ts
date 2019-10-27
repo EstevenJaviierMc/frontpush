@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InvitacionService } from 'src/app/service/invitacion.service';
 import swal from 'src/assets/sweetalert'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-invitaciones',
@@ -12,10 +12,15 @@ export class InvitacionesComponent implements OnInit {
   invitaciones: any[];
   isLoading: boolean = false;
 
-  constructor(private sInvitaciones: InvitacionService, private route: ActivatedRoute) { }
+  constructor(private sInvitaciones: InvitacionService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.getInivitaciones();
+  }
+
+  onLogout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/admin/login']);
   }
 
   getInivitaciones() {

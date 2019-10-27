@@ -11,12 +11,12 @@ import { AppComponent } from './app.component';
 import { AdminModule } from './modules/admin/admin.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { JwtModule } from "@auth0/angular-jwt";
+import { urlBackend } from 'src/app/endpoint'
 
 export function tokenGetter() {
   try {
     return JSON.parse(localStorage.getItem('currentUser'))['access_token'];
   } catch (e) {
-    console.log("ds", e);
     return "";
   }
 }
@@ -40,8 +40,11 @@ export function tokenGetter() {
       config: {
         tokenGetter: tokenGetter,
         skipWhenExpired: true,
-        whitelistedDomains: ["127.0.0.1:8000"],
-        blacklistedRoutes: ["127.0.0.1:8000/api/v1/auth/", "127.0.0.1:8000/api/v1/new-invitation"]
+        whitelistedDomains: [urlBackend],
+        blacklistedRoutes: [
+          urlBackend + "/api/v1/auth/",
+          urlBackend + "/api/v1/new-invitation"
+        ]
       }
     })
   ],

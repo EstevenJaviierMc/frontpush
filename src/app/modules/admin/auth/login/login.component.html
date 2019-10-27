@@ -6,13 +6,19 @@
                     Inicio de sesion
                 </div>
                 <div class="card-body">
+                    <div *ngIf="error">
+                        <div class="alert alert-danger" role="alert">
+                            Usuario y/o contraseña incorrecta!
+                        </div>
+                        <hr>
+                    </div>
                     <form [formGroup]="formLogin" (ngSubmit)="onLogin()">
                         <div class="form-group">
-                            <label for="InputEmail1">Correo</label>
+                            <label for="InputEmail1">Correo:</label>
                             <input type="email" class="form-control" id="InputEmail1" formControlName="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="InputPassword1">Contraseña</label>
+                            <label for="InputPassword1">Contraseña:</label>
                             <input type="password" class="form-control" id="InputPassword1" formControlName="password"
                                 required>
                         </div>

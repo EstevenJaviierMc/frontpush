@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Route, Router } from '@angular/router';
+import swal from 'src/assets/sweetalert'
 
 @Component({
   selector: 'app-login',
@@ -17,18 +19,23 @@ export class LoginComponent implements OnInit {
   loading: boolean = false;
   error: any;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private route: Router) { }
 
   ngOnInit() {
   }
+
   onLogin() {
     this.loading = true;
+    this.error = null;
 
     this.auth.getToken(this.formLogin.value).subscribe(data => {
       localStorage.setItem('currentUser', JSON.stringify(data));
       this.loading = false;
+      this.route.navigate(['admin/invitaciones']);
     }, err => {
-      this.error = err;
+      if (err.status) {
+        this.error = err;
+      }
       this.loading = false;
     });
   }
