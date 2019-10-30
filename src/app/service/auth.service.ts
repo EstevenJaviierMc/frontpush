@@ -20,4 +20,11 @@ export class AuthService {
         return this.http.post(endpoint + 'auth/logout', httpOptions)
             .pipe(map(data => data));
     }
+
+    isAuthenticated(): boolean {
+        if (localStorage.getItem('currentUser') == null) {
+            return false;
+        }
+        return true;
+    }
 }
