@@ -15,4 +15,9 @@ export class AuthService {
         return this.http.post(endpoint + 'auth/login', user, httpOptions)
             .pipe(map(data => data));
     }
+
+    logout(): Observable<any> {
+        return this.http.post(endpoint + 'auth/logout', httpOptions)
+            .pipe(map(data => data));
+    }
 }
