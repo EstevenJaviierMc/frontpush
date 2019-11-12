@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LandingModule } from './modules/landing/landing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -12,6 +12,7 @@ import { AdminModule } from './modules/admin/admin.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { JwtModule } from "@auth0/angular-jwt";
 import { urlBackend } from 'src/app/endpoint'
+import { RefreshTokenInterceptor } from './interceptor/refresh-token.interceptor';
 
 export function tokenGetter() {
   try {
@@ -48,7 +49,9 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
