@@ -13,6 +13,7 @@ import { SharedModule } from './modules/shared/shared.module';
 import { JwtModule } from "@auth0/angular-jwt";
 import { urlBackend } from 'src/app/endpoint'
 import { RefreshTokenInterceptor } from './interceptor/refresh-token.interceptor';
+import { SocketIoService } from './service/socket-io.service';
 
 export function tokenGetter() {
   try {
@@ -50,6 +51,7 @@ export function tokenGetter() {
     })
   ],
   providers: [
+    SocketIoService,
     { provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
