@@ -9,7 +9,7 @@ export class SocketIoService {
     socket: any;
 
     constructor() {
-        this.socket = io('ws://localhost:8000');
+        this.socket = io('ws://frontpush.netlify.com');
     }
 
     listen(eventName: string) {
