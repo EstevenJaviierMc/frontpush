@@ -12,12 +12,12 @@ export class AppComponent implements OnInit {
   constructor(private io: SocketIoService) {
     document.title = "Inicio";
   }
-
-  count: number = 0;
+  
   texto: string = 'Hello Mundo';
 
   ngOnInit() {
     this.io.listen('new-remote-op').subscribe((data: string) => {
+      this.texto = data;
       Push.create('Hello Mundo!', {
         icon: 'assets/apple-touch-icon-72x72.png',
         body: data,
@@ -25,8 +25,6 @@ export class AppComponent implements OnInit {
         vibrate: true
       })
     });
-
-    setInterval(() => this.count++, 1 * 1000);
   }
 
   onEmit() {
