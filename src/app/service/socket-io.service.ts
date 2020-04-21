@@ -9,7 +9,7 @@ export class SocketIoService {
     socket: any;
 
     constructor() {
-        this.socket = io('http://localhost:3000');
+        this.socket = io('ws://localhost:8000');
     }
 
     listen(eventName: string) {
@@ -22,7 +22,5 @@ export class SocketIoService {
 
     emit(eventName: string, data: any) {
         this.socket.emit(eventName, data);
-        console.log(434);
-
     }
 }

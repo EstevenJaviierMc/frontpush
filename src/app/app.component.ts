@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import io from 'socket.io-client';
 import { SocketIoService } from './service/socket-io.service';
+import Push from 'push.js'
 
 @Component({
   selector: 'app-root',
@@ -8,18 +8,29 @@ import { SocketIoService } from './service/socket-io.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
   constructor(private io: SocketIoService) {
     document.title = "Inicio";
   }
 
+  count: number = 0;
+  texto: string = 'Hello Mundo';
+
   ngOnInit() {
-    this.io.listen('Hola').subscribe(data => {
-      console.log(data);
+    this.io.listen('new-remote-op').subscribe(({ data }) => {
+      Push.create('Hello Mundo!', {
+        icon: 'assets/apple-touch-icon-72x72.png',
+        body: data,
+        requireInteraction: true,
+        vibrate: true
+      })
     });
+
+    setInterval(() => this.count++, 1 * 1000);
   }
 
-  chao() {
-    this.io.emit('dis', 'Me fui!');
+  onEmit() {
+    this.io.emit('new-op', this.texto);
   }
 
 }

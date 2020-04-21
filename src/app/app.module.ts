@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LandingModule } from './modules/landing/landing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -34,7 +34,7 @@ export function tokenGetter() {
     LandingModule,
 
     ReactiveFormsModule,
-
+    FormsModule,
     AdminModule,
 
     SharedModule,

@@ -1,3 +1,16 @@
 <!-- <router-outlet></router-outlet> -->
 
-<button (click)="chao()">44</button>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h1> {{texto}} {{count}}</h1>
+        </div>
+    </div>
+
+    <div class="form-row justify-content-center m-3">
+        <div class="form-group col-6">
+            <input type="text" [(ngModel)]="texto" class="form-control" name="texto">
+            <button (click)="onEmit()" class="btn btn-primary btn-block mt-2">Emitir texto</button>
+        </div>
+    </div>
+</div>
