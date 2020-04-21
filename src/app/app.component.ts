@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   texto: string = 'Hello Mundo';
 
   ngOnInit() {
-    this.io.listen('new-remote-op').subscribe(({ data }) => {
+    this.io.listen('new-remote-op').subscribe((data: string) => {
       Push.create('Hello Mundo!', {
         icon: 'assets/apple-touch-icon-72x72.png',
         body: data,
