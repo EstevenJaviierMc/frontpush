@@ -9,7 +9,7 @@ export class SocketIoService {
     socket: any;
 
     constructor() {
-        this.socket = io('ws://frontpush.herokuapp.com');
+        this.socket = io('https://frontpush.herokuapp.com');
     }
 
     listen(eventName: string) {
