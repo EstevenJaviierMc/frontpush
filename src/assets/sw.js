@@ -1,5 +1,5 @@
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('src/sw.js')
+    navigator.serviceWorker.register('assets/sw.js')
         .then(function (registration) {
             registration.addEventListener('updatefound', function () {
                 // If updatefound is fired, it means that there's
