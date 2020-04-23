@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketIoService } from './service/socket-io.service';
-import Push from 'push.js'
+import { PushService } from './service/Push.service';
 
 @Component({
   selector: 'app-root',
@@ -9,26 +9,24 @@ import Push from 'push.js'
 })
 export class AppComponent implements OnInit {
 
-  constructor(private io: SocketIoService) {
+  constructor(private io: SocketIoService, private push: PushService) {
     document.title = "Inicio";
   }
-  
-  texto: string = 'Hello Mundo';
+
+  arrayTexto: string[] = ['Hello Mundo'];
+  texto: string;
 
   ngOnInit() {
     this.io.listen('new-remote-op').subscribe((data: string) => {
-      this.texto = data;
-      Push.create('Hello Mundo!', {
-        icon: 'assets/apple-touch-icon-72x72.png',
-        body: data,
-        requireInteraction: true,
-        vibrate: true
-      })
+      this.arrayTexto.push(data);
+      this.push.create(data);
     });
   }
 
   onEmit() {
+    if (!this.texto) return alert('Escribe un texto Jodaaa!');
     this.io.emit('new-op', this.texto);
+    this.texto = "";
   }
 
 }

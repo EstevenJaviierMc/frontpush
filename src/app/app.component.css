@@ -1,0 +1,5 @@
+.texto {
+    height: auto;
+    word-wrap: break-word;
+    overflow: hidden;
+}
