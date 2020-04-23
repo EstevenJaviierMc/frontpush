@@ -10,7 +10,7 @@ import { PushService } from './service/Push.service';
 export class AppComponent implements OnInit {
 
   constructor(private io: SocketIoService, private push: PushService) {
-    document.title = "Inicio";
+    document.title = document.title + " - Inicio";
   }
 
   arrayTexto: string[] = ['Hello Mundo'];
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.io.listen('new-remote-op').subscribe((data: string) => {
-      this.arrayTexto.push(data);
+      this.arrayTexto.unshift('-' + data);
       this.push.create(data);
     });
   }
@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
   onEmit() {
     if (!this.texto) return alert('Escribe un texto Jodaaa!');
     this.io.emit('new-op', this.texto);
+    this.arrayTexto.unshift('+' + this.texto);
     this.texto = "";
   }
 
