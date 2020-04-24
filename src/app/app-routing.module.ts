@@ -1,13 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { Page404Component } from './modules/shared/page404/page404.component';
 
-const routes: Routes = [
-  { path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule' },
-  { path: 'landing', loadChildren: './modules/landing/landing.module#LandingModule' },
-  { path: '', pathMatch: 'full', redirectTo: 'landing' },
-  { path: '**', component: Page404Component }
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

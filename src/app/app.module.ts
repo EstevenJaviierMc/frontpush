@@ -1,25 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { LandingModule } from './modules/landing/landing.module';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { AdminModule } from './modules/admin/admin.module';
-import { SharedModule } from './modules/shared/shared.module';
-import { JwtModule } from "@auth0/angular-jwt";
-import { urlBackend } from 'src/app/endpoint'
 
-export function tokenGetter() {
-  try {
-    return JSON.parse(localStorage.getItem('currentUser'))['access_token'];
-  } catch (e) {
-    return "";
-  }
-}
+import { SocketIoService } from './service/socket-io.service';
+import { PushService } from './service/Push.service';
+
 
 @NgModule({
   declarations: [
@@ -29,26 +18,13 @@ export function tokenGetter() {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    LandingModule,
-
     ReactiveFormsModule,
-
-    AdminModule,
-
-    SharedModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        skipWhenExpired: true,
-        whitelistedDomains: [urlBackend],
-        blacklistedRoutes: [
-          urlBackend + "/api/v1/auth/",
-          urlBackend + "/api/v1/new-invitation"
-        ]
-      }
-    })
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    PushService,
+    SocketIoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

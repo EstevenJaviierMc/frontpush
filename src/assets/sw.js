@@ -1,21 +1,5 @@
-<!doctype html>
-<html lang="es">
-
-<head>
-  <meta charset="utf-8">
-  <title>Hello Mundo!</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-
-<body>
-  <app-root></app-root>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
+if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
         .then(function (registration) {
           registration.addEventListener('updatefound', function () {
             // If updatefound is fired, it means that there's
@@ -34,7 +18,3 @@
     } else {
       console.log('Service workers are not supported.');
     }
-  </script>
-</body>
-
-</html>
