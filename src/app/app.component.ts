@@ -16,22 +16,20 @@ export class AppComponent implements OnInit {
   arrayTexto: string[] = ['Hello Mundo'];
   texto: string;
 
-  @Select(Notificacion.GetAll) notificacion$;
+  noti: any = [{ nombre: 'Nueva Reserva', estado: 'DEFAULT' }, { nombre: 'Nuevo Pago', estado: 'VISTO' }];
+
+  @Select(NotificacionState) notificacion$: Observable<any>;
 
   constructor(private io: SocketIoService, private push: PushService, private store: Store) {
-
+    // this.store.dispatch(new Notificacion.GetAll(this.noti));
     document.title = document.title + " - Inicio";
   }
 
   ngOnInit() {
-    // this.notificacion$.subscribe((data) => {
-    //   console.log(data);
-    // })
-
     this.io.listen('new-remote-op').subscribe((data: string) => {
       this.arrayTexto.unshift('-' + data);
       this.push.create(data);
-      this.store.dispatch(new Notificacion.Add(data));
+      this.store.dispatch(new Notificacion.GetAll(this.noti));
     });
   }
 

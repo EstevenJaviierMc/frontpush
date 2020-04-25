@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { NotificacionState } from 'src/app/shared/app.state';
-import { withLatestFrom } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +9,12 @@ import { withLatestFrom } from 'rxjs/operators';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  // notificacion$: Observable<NotificacionState[]>;
+  @Select(NotificacionState) notificacion$: Observable<any>;
+
+  ntfTotal: number = 0;
 
   constructor(private store: Store) {
-    // this.notificacion$ = this.store.select(state => state.notificacion);
+    this.notificacion$.subscribe(({ notificaciones }) => this.ntfTotal = notificaciones.length)
   }
 
   ngOnInit(): void {
