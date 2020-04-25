@@ -30,7 +30,7 @@ import { NotificacionState } from './shared/app.state';
     NgxsModule.forRoot([NotificacionState], {
       developmentMode: !environment.production
     }),
-    // NgxsLoggerPluginModule.forRoot()
+    NgxsLoggerPluginModule.forRoot()
   ],
   providers: [
     PushService,

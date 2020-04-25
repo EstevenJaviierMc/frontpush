@@ -17,12 +17,12 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.notificacion$.pipe(withLatestFrom(this.notificacion$))
-      .subscribe(([_, animals]) => {
-        // do something with animals
-        console.log(animals);
+    // this.notificacion$.pipe(withLatestFrom(this.notificacion$))
+    //   .subscribe(([_, animals]) => {
+    //     // do something with animals
+    //     console.log(animals);
 
-      });
+    //   });
 
   }
 

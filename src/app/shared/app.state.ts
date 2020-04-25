@@ -31,11 +31,14 @@ export class NotificacionState {
     }
 
     @Action(Notificacion.Add)
-    addNotificacion(ctx: StateContext<NotificacionStateModel>, { payload }: Notificacion.Add) {
-        const state = ctx.getState();
-        ctx.setState({
-            ...state,
-            texto: payload
-        });
+    addNotificacion(ctx: StateContext<NotificacionStateModel>, action: Notificacion.Add) {
+        ctx.setState((state) => ({ ...state, ...action }));
     }
 }
+
+@State<string[]>({
+    name: 'animals',
+    defaults: []
+})
+@Injectable()
+export class AnimalsState { }
