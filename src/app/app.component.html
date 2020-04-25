@@ -1,22 +1,21 @@
 <!-- <router-outlet></router-outlet> -->
 
-<div class="container">
-    <div class="row justify-content-center mt-4">
-        <div class="form-group col-lg-6">
-            <form class="shadow-sm p-3">
-                <input type="text" placeholder="Type a message" [(ngModel)]="texto" class="form-control" name="texto">
-                <button (click)="onEmit()" class="btn btn-primary btn-block mt-2">Send</button>
-            </form>
-        </div>
+<div class="container" style="background-color: aquamarine;" <div class="row justify-content-center mt-4">
+    <div class="form-group col-lg-6">
+        <form class="shadow-sm p-3">
+            <input type="text" placeholder="Type a message" [(ngModel)]="texto" class="form-control" name="texto">
+            <button (click)="onEmit()" class="btn btn-primary btn-block mt-2">Send</button>
+        </form>
     </div>
+</div>
 
-    <div class="row mt-4 justify-content-center">
-        <div class="col-lg-6">
-            <div class="shadow p-2">
-                <div class="border-bottom py-2 px-2" *ngFor="let item of arrayTexto">
-                    <h5 class="mb-0 texto">{{item}}</h5>
-                </div>
+<div class="row mt-4 justify-content-center">
+    <div class="col-lg-6">
+        <div class="shadow p-2">
+            <div class="border-bottom py-2 px-2" *ngFor="let item of arrayTexto">
+                <h5 class="mb-0 texto">{{item}}</h5>
             </div>
         </div>
     </div>
+</div>
 </div>
