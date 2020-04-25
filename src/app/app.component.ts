@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketIoService } from './service/socket-io.service';
 import { PushService } from './service/Push.service';
+import { Observable } from 'rxjs';
+import { NotificacionState, NotificacionStateModel } from './shared/app.state';
+import { Store, Select } from '@ngxs/store';
+import { Notificacion } from './shared/app.action';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +12,21 @@ import { PushService } from './service/Push.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  constructor(private io: SocketIoService, private push: PushService) {
-    document.title = document.title + " - Inicio";
-  }
-
   arrayTexto: string[] = ['Hello Mundo'];
   texto: string;
+
+  notificacion$: Observable<NotificacionState>;
+
+  constructor(private io: SocketIoService, private push: PushService, private store: Store) {
+    this.notificacion$ = this.store.select(state => state.notificacion);
+    document.title = document.title + " - Inicio";
+  }
 
   ngOnInit() {
     this.io.listen('new-remote-op').subscribe((data: string) => {
       this.arrayTexto.unshift('-' + data);
       this.push.create(data);
+      this.store.dispatch(new Notificacion.Add(data));
     });
   }
 
