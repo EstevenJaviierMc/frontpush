@@ -6,7 +6,7 @@ navigator.serviceWorker.register('sw.js');
     providedIn: 'root'
 })
 export class NotificacionService {
-    n: any = ['Nueva Reserva', 'Nuevo Pago'];
+    n: any = [{ nombre: 'Nueva Reserva', estado: 'DEFAULT' }, { nombre: 'Nuevo Pago', estado: 'VISTO' }];
     getNotificaciones(aid?: number): Observable<any> {
         return this.n;
     }

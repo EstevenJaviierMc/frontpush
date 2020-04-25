@@ -10,10 +10,10 @@ import { withLatestFrom } from 'rxjs/operators';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  notificacion$: Observable<NotificacionState>;
+  // notificacion$: Observable<NotificacionState[]>;
 
   constructor(private store: Store) {
-    this.notificacion$ = this.store.select(state => state.notificacion);
+    // this.notificacion$ = this.store.select(state => state.notificacion);
   }
 
   ngOnInit(): void {
@@ -23,7 +23,6 @@ export class NavbarComponent implements OnInit {
     //     console.log(animals);
 
     //   });
-
   }
 
 }

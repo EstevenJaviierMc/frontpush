@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { NotificacionState, NotificacionStateModel } from './shared/app.state';
 import { Store, Select } from '@ngxs/store';
 import { Notificacion } from './shared/app.action';
+import { withLatestFrom } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +16,18 @@ export class AppComponent implements OnInit {
   arrayTexto: string[] = ['Hello Mundo'];
   texto: string;
 
-  notificacion$: Observable<NotificacionState>;
+  @Select(Notificacion.GetAll) notificacion$;
 
   constructor(private io: SocketIoService, private push: PushService, private store: Store) {
-    this.notificacion$ = this.store.select(state => state.notificacion);
+
     document.title = document.title + " - Inicio";
   }
 
   ngOnInit() {
+    // this.notificacion$.subscribe((data) => {
+    //   console.log(data);
+    // })
+
     this.io.listen('new-remote-op').subscribe((data: string) => {
       this.arrayTexto.unshift('-' + data);
       this.push.create(data);

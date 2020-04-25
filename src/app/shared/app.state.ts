@@ -1,44 +1,46 @@
-import { State, StateToken, StateContext, Action } from '@ngxs/store';
+import { State, StateToken, StateContext, Action, Selector, Store } from '@ngxs/store';
 import { NotificacionService } from '../service/notificacion.service';
 import { tap } from 'rxjs/operators';
 import { Notificacion } from './app.action';
 import { Injectable } from '@angular/core';
+import { NotificacionModel } from 'src/app/core/models/notificacion.model';
+import { patch } from '@ngxs/store/operators';
 
 const NOTIFICACION_STATE_TOKEN = new StateToken<NotificacionStateModel>('notificacion');
 
 export interface NotificacionStateModel {
-    texto: string;
-    estado?: 'DEFAULT' | 'VISTO';
+    notificaciones: NotificacionModel[];
 }
 
 @State<NotificacionStateModel>({
     name: NOTIFICACION_STATE_TOKEN,
     defaults: {
-        texto: '',
-        estado: 'DEFAULT'
+        notificaciones: []
     }
+
 })
 
 @Injectable()
 export class NotificacionState {
-    constructor(private notificacionService: NotificacionService) { }
+    constructor(private store: Store, private notificacionService: NotificacionService) { }
 
     @Action(Notificacion.GetAll)
-    getNotificaciones({ getState, patchState }: StateContext<NotificacionStateModel>) {
-        const state = getState();
+    getNotificaciones(ctx: StateContext<NotificacionStateModel>, action: Notificacion.GetAll) {
         return this.notificacionService.getNotificaciones()
-            .pipe(tap(notificaciones => patchState({ state, ...notificaciones })));
+            .pipe(tap(notificaciones => {
+                ctx.setState({
+                    ...ctx.getState(),
+                    notificaciones: [notificaciones]
+                });
+            }));
     }
 
     @Action(Notificacion.Add)
-    addNotificacion(ctx: StateContext<NotificacionStateModel>, action: Notificacion.Add) {
-        ctx.setState((state) => ({ ...state, ...action }));
+    addNotificacion(ctx: StateContext<any>, action: Notificacion.Add) {
+
+        ctx.setState({
+            ...ctx.getState(),
+            notificaciones: [action]
+        });
     }
 }
-
-@State<string[]>({
-    name: 'animals',
-    defaults: []
-})
-@Injectable()
-export class AnimalsState { }
