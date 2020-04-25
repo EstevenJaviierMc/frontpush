@@ -1,5 +1,5 @@
 {
-  "name": "cfc-palabrade-fe",
+  "name": "hellomundo",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^9.1.1",
     "@angular/router": "^9.1.1",
     "@auth0/angular-jwt": "^3.0.1",
+    "@ngxs/logger-plugin": "^3.6.2-dev.master-f6a6e00",
+    "@ngxs/store": "^3.6.2-dev.master-f6a6e00",
     "express": "^4.17.1",
     "path": "^0.12.7",
     "push.js": "^1.0.12",
