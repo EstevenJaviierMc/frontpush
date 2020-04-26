@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketIoService } from './service/socket-io.service';
 import { PushService } from './service/Push.service';
-import { Observable } from 'rxjs';
-import { NotificacionState, NotificacionStateModel } from './shared/app.state';
-import { Store, Select } from '@ngxs/store';
-import { Notificacion } from './shared/app.action';
-import { withLatestFrom } from 'rxjs/operators';
+import { Store } from '@ngxs/store';
+import { Notification } from './core/state/notificaciones/notificaciones.actions';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +13,7 @@ export class AppComponent implements OnInit {
   arrayTexto: string[] = ['Hello Mundo'];
   texto: string;
 
-  noti: any = [{ nombre: 'Nueva Reserva', estado: 'DEFAULT' }, { nombre: 'Nuevo Pago', estado: 'VISTO' }];
-
-  @Select(NotificacionState) notificacion$: Observable<any>;
-
   constructor(private io: SocketIoService, private push: PushService, private store: Store) {
-    // this.store.dispatch(new Notificacion.GetAll(this.noti));
     document.title = document.title + " - Inicio";
   }
 
@@ -29,7 +21,7 @@ export class AppComponent implements OnInit {
     this.io.listen('new-remote-op').subscribe((data: string) => {
       this.arrayTexto.unshift('-' + data);
       this.push.create(data);
-      this.store.dispatch(new Notificacion.GetAll(this.noti));
+      this.store.dispatch(new Notification.Add({ id: 1, texto: 'Nueva Reserva', estado: 'DEFAULT' }));
     });
   }
 

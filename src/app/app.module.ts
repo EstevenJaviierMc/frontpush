@@ -14,7 +14,7 @@ import { NotificacionService } from './service/notificacion.service';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 
 import { environment } from 'src/environments/environment';
-import { NotificacionState } from './shared/app.state';
+import { NotificacionState } from './core/state/notificaciones/notificaciones.state';
 
 
 @NgModule({
@@ -30,7 +30,9 @@ import { NotificacionState } from './shared/app.state';
     NgxsModule.forRoot([NotificacionState], {
       developmentMode: !environment.production
     }),
-    // NgxsLoggerPluginModule.forRoot()
+    NgxsLoggerPluginModule.forRoot(
+      { disabled: environment.production }
+    )
   ],
   providers: [
     PushService,
