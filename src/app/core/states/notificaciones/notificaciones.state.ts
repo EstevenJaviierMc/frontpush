@@ -2,8 +2,8 @@ import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { NotificacionStateModel } from '../notificaciones/notificaciones.model';
 import { Notification } from './notificaciones.actions';
 
-@State({
-    name: 'notificacion',
+@State<NotificacionStateModel>({
+    name: 'notificaciones',
     defaults: {
         notificaciones: []
     }
@@ -12,12 +12,12 @@ export class NotificacionState {
     @Selector()
     static getNotificaciones(state: NotificacionStateModel) { return state.notificaciones; }
 
-    // Añade un nuevo post al estado
+    // Añade una nueva notificacion al estado
     @Action(Notification.Add)
     add({ getState, patchState }: StateContext<NotificacionStateModel>, { payload }: Notification.Add) {
         const state = getState();
         patchState({
-            notificaciones: [...state.notificaciones, payload]
+            notificaciones: [payload, ...state.notificaciones]
         });
     }
 

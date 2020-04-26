@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SocketIoService } from './service/socket-io.service';
 import { PushService } from './service/Push.service';
 import { Store } from '@ngxs/store';
-import { Notification } from './core/state/notificaciones/notificaciones.actions';
+import { Notification } from './core/states/notificaciones/notificaciones.actions';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     this.io.listen('new-remote-op').subscribe((data: string) => {
       this.arrayTexto.unshift('-' + data);
       this.push.create(data);
-      this.store.dispatch(new Notification.Add({ id: 1, texto: 'Nueva Reserva', estado: 'DEFAULT' }));
+      this.store.dispatch(new Notification.Add({ id: 1, texto: data, estado: 'DEFAULT' }));
     });
   }
 

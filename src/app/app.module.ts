@@ -14,7 +14,7 @@ import { NotificacionService } from './service/notificacion.service';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 
 import { environment } from 'src/environments/environment';
-import { NotificacionState } from './core/state/notificaciones/notificaciones.state';
+import { NotificacionState } from './core/states/notificaciones/notificaciones.state';
 
 
 @NgModule({
