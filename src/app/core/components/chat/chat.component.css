@@ -1,0 +1,33 @@
+.msg-out, .msg-in { 
+    padding: 5px 15px;
+    margin: 10px 0;
+    max-width: 80%;
+    position: relative;
+}
+.shadowd {
+    mask-image: linear-gradient(to bottom, transparent, white 10px, white 95%, transparent);
+}
+
+.msg-in-from {
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+.msg-in {
+    border-radius: 15px 15px 15px 0;    
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.msg-out {
+    border-radius: 15px 15px 0 15px;
+    background-color: black;
+    color: white;
+    box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}

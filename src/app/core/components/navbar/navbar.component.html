@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 shadow-sm">
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark py-3 shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="#">Hello Mundo</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -8,6 +8,9 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
+                <!-- <li class="nav-item">
+                    <a routerLink="/chat" class="nav-link">Chat</a>
+                </li> -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,23 +34,22 @@
                                     fill="#007bff" dy=".3em">32x32</text>
                             </svg>
                             <p class="media-body mb-0 small text-break" style="max-width: 400px;">
-                                <strong class="d-block text-gray-dark">@username</strong>
+                                <strong class="d-block text-gray-dark">Nuevo mensaje de {{item.from}}</strong>
                                 {{ item.texto }}
                             </p>
                         </div>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Esteven Moreno
+                        Room
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Ajustes</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Cerrar sesion</a>
+                        <a class="dropdown-item" routerLink="/room">Room</a>
+                        <a class="dropdown-item" routerLink="/create-room">Create Room</a>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>

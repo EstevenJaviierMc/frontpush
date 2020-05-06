@@ -1,34 +1,45 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from '~app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './shared/shared.module';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { CoreModule } from '~core/core.module';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from '~app/app.component';
 
-import { SocketIoService } from './service/socket-io.service';
-import { PushService } from './service/Push.service';
-import { NotificacionService } from './service/notificacion.service';
-import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { SocketIoService } from '~app/core/services/socket-io.service';
+import { PushService } from '~app/core/services/Push.service';
+import { NotificacionService } from '~app/core/services/notificacion.service';
+import { NavbarComponent } from '~app/core/components/navbar/navbar.component';
 
 import { environment } from 'src/environments/environment';
-import { NotificacionState } from './core/states/notificaciones/notificaciones.state';
+import { NotificacionState } from '~app/core/states/notificaciones/notificaciones.state';
+import { AuthState } from '~core/states/auth/auth.state';
+import { RoomComponent } from './core/components/room/room.component';
+import { CreateRoomComponent } from './core/components/create-room/create-room.component';
+import { ChatComponent } from './core/components/chat/chat.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    CreateRoomComponent,
+    RoomComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule,
-    NgxsModule.forRoot([NotificacionState], {
+    CoreModule,
+    NgxsModule.forRoot([NotificacionState, AuthState], {
       developmentMode: !environment.production
+    }),
+    NgxsStoragePluginModule.forRoot({
+      key: 'auth.token'
     }),
     NgxsLoggerPluginModule.forRoot(
       { disabled: environment.production }

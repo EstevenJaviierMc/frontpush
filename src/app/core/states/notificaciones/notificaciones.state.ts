@@ -1,6 +1,7 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { NotificacionStateModel } from '../notificaciones/notificaciones.model';
 import { Notification } from './notificaciones.actions';
+import { Injectable } from '@angular/core';
 
 @State<NotificacionStateModel>({
     name: 'notificaciones',
@@ -8,6 +9,8 @@ import { Notification } from './notificaciones.actions';
         notificaciones: []
     }
 })
+
+@Injectable()
 export class NotificacionState {
     @Selector()
     static getNotificaciones(state: NotificacionStateModel) { return state.notificaciones; }
@@ -20,7 +23,6 @@ export class NotificacionState {
             notificaciones: [payload, ...state.notificaciones]
         });
     }
-
 
     // Elimina un post del estado
     @Action(Notification.UpdateEstado)

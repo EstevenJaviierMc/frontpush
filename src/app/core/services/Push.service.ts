@@ -5,15 +5,15 @@ navigator.serviceWorker.register('sw.js');
     providedIn: 'root'
 })
 export class PushService {
-    create(body: string) {
+    create(body: { from: string, texto: string }) {
         Notification.requestPermission(result => {
             if (result === 'granted') {
                 navigator.serviceWorker.ready.then(registration => {
-                    registration.showNotification('Hello Mundo!', {
-                        body: body,
+                    registration.showNotification(body.from, {
+                        body: body.texto,
                         icon: 'assets/img/img_perfil.jpg',
                         vibrate: [200, 100],
-                        tag: 'identificador'
+                        tag: body.from
                     });
                 });
             }

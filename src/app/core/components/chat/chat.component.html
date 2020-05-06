@@ -1,0 +1,49 @@
+<div class="container" *ngIf="!currentUser">
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-5">
+            <div class="alert alert-danger" *ngIf="hasError" role="alert">
+                {{hasError}}
+            </div>
+
+            <div class="card">
+                <div class="card-header py-2">Bienvenido/a</div>
+                <div class="card-body">
+                    <form (submit)="setUserName(nombre.value)">
+                        <div class="form-group">
+                            <label for="nombre">Ingresa tu nombre: </label>
+                            <input type="text" #nombre class="form-control">
+                        </div>
+                        <button class="btn btn-primary btn-block">Ingresar al chat</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" *ngIf="currentUser">
+    <div class="row my-4 justify-content-center">
+        <div class="col-lg-6">
+            <div class="shadow">
+                <div class="p-3 shadowd" style="height: 350px; overflow: auto;">
+                    <span class="text-muted" *ngIf="arrayTexto.length === 0">No tienes mensajes</span>
+                    <div class="content-msg">
+                        <div *ngFor="let item of arrayTexto" class="text-break"
+                            [className]="item.from === currentUser ? 'msg-out ml-auto' : 'msg-in mb-4'">
+                            {{item.texto}}
+                            <span class="text-muted msg-in-from" *ngIf="item.from !== currentUser">
+                                {{item.from}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <form (submit)="onEmit()" class="p-3 pt-1">
+                    <input type="text" placeholder="Type a message" [(ngModel)]="texto" class="form-control"
+                        name="texto">
+                    <button type="submit" class="btn btn-primary btn-block mt-2">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

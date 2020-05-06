@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SocketIoService } from './service/socket-io.service';
-import { PushService } from './service/Push.service';
-import { Store } from '@ngxs/store';
-import { Notification } from './core/states/notificaciones/notificaciones.actions';
+import { PushService } from '~app/core/services/Push.service';
+import { Store, Actions, ofActionDispatched } from '@ngxs/store';
+import { Router } from '@angular/router';
+import { Auth } from './core/states/auth/auth.action';
 
 @Component({
   selector: 'app-root',
@@ -10,26 +10,14 @@ import { Notification } from './core/states/notificaciones/notificaciones.action
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  arrayTexto: string[] = ['Hello Mundo'];
-  texto: string;
-
-  constructor(private io: SocketIoService, private push: PushService, private store: Store) {
+  constructor(private push: PushService, private store: Store,
+    private actions: Actions, private router: Router) {
     document.title = document.title + " - Inicio";
   }
 
   ngOnInit() {
-    this.io.listen('new-remote-op').subscribe((data: string) => {
-      this.arrayTexto.unshift('-' + data);
-      this.push.create(data);
-      this.store.dispatch(new Notification.Add({ id: 1, texto: data, estado: 'DEFAULT' }));
+    this.actions.pipe(ofActionDispatched(Auth.Logout)).subscribe(() => {
+      this.router.navigate(['/']);
     });
   }
-
-  onEmit() {
-    if (!this.texto) return alert('Escribe un texto Jodaaa!');
-    this.io.emit('new-op', this.texto);
-    this.arrayTexto.unshift('+' + this.texto);
-    this.texto = "";
-  }
-
 }

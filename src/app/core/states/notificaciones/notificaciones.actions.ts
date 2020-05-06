@@ -8,6 +8,6 @@ export namespace Notification {
 
     export class UpdateEstado {
         static readonly type = '[Notificacion] UpdateEstado';
-        constructor(public id: number, public estado: 'DEFAULT' | 'VISTO') { }
+        constructor(public id: number, public estado: 'DEFAULT' | 'VISTO', from: string, texto: string) { }
     }
 }
