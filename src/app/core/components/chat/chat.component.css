@@ -1,47 +1,49 @@
-.chat-area {
+.chat-msg-list {
     display: flex;
     flex-direction: column-reverse;
-    height: 350px; 
-    overflow: auto;                
+    padding: 15px 20px;
+    overflow-y: scroll;
+    height: 400px;
 }
 
-.content-msg {
+.msg-row {
     display: grid;
 }
 
-.msg-out, .msg-in { 
-    position: relative;
+.msg-text {
     padding: 5px 15px;
     margin: 5px 0;
-    max-width: 80%;
-    box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.22);
-    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.msg-in {
-    /* display: inline-block; */
-    border-radius: 15px 15px 15px 0;    
-    background-color: white;
-    color: black;
-    justify-items: start;
-}
-
-.msg-out {
-    border-radius: 15px 15px 0 15px;
-    background-color: black;
-    color: white;
-    justify-items: end;
-}
-
-.msg-in-from {
-    position: absolute;
-    bottom: -18px;
-    left: 0;
-    font-size: 11px;
+.sended-by {
+    font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
 
-.shadowd {
+.sended .msg-text {
+    border-radius: 15px 15px 0 15px;
+    background-color: black;
+    color: white;
+    box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.22);
+}
+
+.recived .msg-text {
+    border-radius: 15px 15px 15px 0;    
+    background-color: white;
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: 1px;
+}
+
+.sended {
+    justify-items: end;
+}
+
+.recived {
+    justify-items: start;
+}
+
+.shadow-linear {
     mask-image: linear-gradient(to bottom, transparent, white 10px, white 95%, transparent);
 }

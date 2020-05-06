@@ -45,7 +45,7 @@ export class ChatComponent implements OnInit {
   socketIo() {
     this.socketSubscription = this.io.listen$('new-remote-op')
       .subscribe((data: any) => {
-        this.arrayTexto.push(data);
+        this.arrayTexto.unshift(data);
         this.push.create(data);
         this.store.dispatch(new Notification.Add({ id: 1, texto: data.texto, from: data.from, estado: 'DEFAULT' }));
       }, err => {
@@ -57,7 +57,7 @@ export class ChatComponent implements OnInit {
     if (!this.texto) return alert('Escribe un texto Jodaaa!');
     const msg = { from: this.currentUser, texto: this.texto }
     this.io.emit('new-op', msg);
-    this.arrayTexto.push(msg);
+    this.arrayTexto.unshift(msg);
     this.texto = "";
 
   }
