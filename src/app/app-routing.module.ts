@@ -13,7 +13,8 @@ const routes: Routes = [
     path: 'admin', loadChildren: () => import('~app/modules/admin/admin.module').then(mod => mod.AdminModule),
     canActivate: [AuthGuard]
   },
-  { path: '', pathMatch: 'full', redirectTo: 'chat' }
+  { path: '', redirectTo: 'chat', pathMatch: 'full' },
+  { path: '**', redirectTo: 'chat' }
 ];
 
 @NgModule({

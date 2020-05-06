@@ -30,7 +30,7 @@
                     <span class="text-muted" *ngIf="arrayTexto.length === 0">No tienes mensajes</span>
                     <div class="content-msg">
                         <div *ngFor="let item of arrayTexto" class="text-break"
-                            [className]="item.from === currentUser ? 'msg-out ml-auto' : 'msg-in mb-4'">
+                            [ngClass]="item.from === currentUser ? 'msg-out ml-auto' : 'msg-in mb-4'">
                             {{item.texto}}
                             <span class="text-muted msg-in-from" *ngIf="item.from !== currentUser">
                                 {{item.from}}

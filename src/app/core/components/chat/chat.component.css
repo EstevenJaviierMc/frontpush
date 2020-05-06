@@ -1,8 +1,13 @@
+.content-msg {
+    display: grid;
+}
+
 .msg-out, .msg-in { 
     padding: 5px 15px;
-    margin: 10px 0;
+    margin: 5px 0;
     max-width: 80%;
     position: relative;
+    display: inline-block;
 }
 .shadowd {
     mask-image: linear-gradient(to bottom, transparent, white 10px, white 95%, transparent);
